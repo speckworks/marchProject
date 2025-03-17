@@ -1,0 +1,28 @@
+import { NextResponse } from 'next/server';
+import { Task } from '@/types/task';
+
+// In-memory storage for tasks (replace with database in production)
+let tasks: Task[] = [];
+
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const task = tasks.find(task => task.id === params.id);
+    
+    if (!task) {
+      return NextResponse.json(
+        { error: 'Task not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(task);
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to get task' },
+      { status: 500 }
+    );
+  }
+} 
