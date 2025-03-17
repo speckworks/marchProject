@@ -24,6 +24,12 @@ export default function TaskList() {
     setTasks([...tasks, newTask]);
   };
 
+  const updateTask = (id: string, title: string, description: string) => {
+    setTasks(tasks.map(task =>
+      task.id === id ? { ...task, title, description } : task
+    ));
+  };
+
   const updateTaskStatus = (id: string, status: 'pending' | 'completed') => {
     setTasks(tasks.map(task => 
       task.id === id ? { ...task, status } : task
@@ -47,6 +53,7 @@ export default function TaskList() {
               {...task}
               onStatusChange={updateTaskStatus}
               onDelete={deleteTask}
+              onUpdate={updateTask}
             />
           ))
         )}

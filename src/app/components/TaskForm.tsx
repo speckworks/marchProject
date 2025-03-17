@@ -55,7 +55,7 @@ export default function TaskForm({ onSubmit }: TaskFormProps) {
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-custom-navy text-white py-2 px-4 rounded-md hover:bg-custom-teal focus:outline-none focus:ring-2 focus:ring-custom-teal focus:ring-offset-2 transition-colors duration-300"
+                  className="w-full bg-custom-navy text-white py-2 px-4 rounded-md transition-all duration-300 ease-in-out hover:bg-[#008f11] focus:outline-none focus:ring-2 focus:ring-[#008f11] focus:ring-offset-2"
                 >
                   Add Task
                 </button>
