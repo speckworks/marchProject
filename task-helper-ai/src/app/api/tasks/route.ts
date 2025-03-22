@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../../../types/task';
+import type { Task, CreateTaskRequest, UpdateTaskRequest } from '../../types/task';
 
 // In-memory storage for tasks (replace with database in production)
 let tasks: Task[] = [];

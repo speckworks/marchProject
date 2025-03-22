@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { Task } from '@/types/task';
+import type { Task } from '../../../types/task';
 
 // In-memory storage for tasks (replace with database in production)
 let tasks: Task[] = [];
@@ -9,7 +9,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const task = tasks.find(task => task.id === params.id);
+    const task = tasks.find(t => t.id === params.id);
     
     if (!task) {
       return NextResponse.json(
@@ -21,7 +21,7 @@ export async function GET(
     return NextResponse.json(task);
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to get task' },
+      { error: 'Failed to fetch task' },
       { status: 500 }
     );
   }
