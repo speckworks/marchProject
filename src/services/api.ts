@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001/api';
+const API_BASE_URL = 'https://march-project-backend.vercel.app/api';
 
 export interface Task {
   id: string;
@@ -43,13 +43,13 @@ export const api = {
     return response.json();
   },
 
-  async updateTask(id: string, task: UpdateTaskRequest): Promise<Task> {
+  async updateTask(task: UpdateTaskRequest & { id: string }): Promise<Task> {
     const response = await fetch(`${API_BASE_URL}/tasks`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, ...task }),
+      body: JSON.stringify(task),
     });
     if (!response.ok) {
       throw new Error('Failed to update task');
@@ -64,5 +64,5 @@ export const api = {
     if (!response.ok) {
       throw new Error('Failed to delete task');
     }
-  },
-}; 
+  }
+};
