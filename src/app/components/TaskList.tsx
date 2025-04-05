@@ -41,7 +41,11 @@ export default function TaskList() {
 
   const updateTask = async (id: string, title: string, description: string) => {
     try {
-      const updatedTask = await api.updateTask(id, { title, description });
+      const updatedTask = await api.updateTask({
+        id,
+        title,
+        description
+      });
       setTasks(tasks.map(task =>
         task.id === id ? updatedTask : task
       ));
@@ -54,7 +58,10 @@ export default function TaskList() {
 
   const updateTaskStatus = async (id: string, status: 'pending' | 'completed') => {
     try {
-      const updatedTask = await api.updateTask(id, { completed: status === 'completed' });
+      const updatedTask = await api.updateTask({
+        id,
+        completed: status === 'completed'
+      });
       setTasks(tasks.map(task => 
         task.id === id ? updatedTask : task
       ));
