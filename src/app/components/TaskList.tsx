@@ -113,14 +113,15 @@ export default function TaskList() {
           <p className="text-center text-gray-500">No tasks yet. Add one above!</p>
         ) : (
           tasks.map(task => (
-            <Task
-              key={task.id}
-              {...task}
-              status={task.completed ? 'completed' : 'pending'}
-              onStatusChange={updateTaskStatus}
-              onDelete={deleteTask}
-              onUpdate={updateTask}
-            />
+            <div key={task.id} className="bg-white rounded-[2rem]">
+              <Task
+                {...task}
+                status={task.completed ? 'completed' : 'pending'}
+                onStatusChange={updateTaskStatus}
+                onDelete={deleteTask}
+                onUpdate={updateTask}
+              />
+            </div>
           ))
         )}
       </div>
